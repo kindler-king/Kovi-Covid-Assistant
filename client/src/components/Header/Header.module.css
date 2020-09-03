@@ -1,0 +1,27 @@
+.Header{
+  width: 100vw;
+  height: 15vh;
+  display: flex;
+  justify-content: center ;
+  align-items: center;
+  /* background: rgb(17, 98, 190); */
+}
+
+.Header > h1{
+  font-size: 5rem;
+  color: #fff;
+  letter-spacing: 5px;
+}
+
+.Header > img {
+  height: 75%;
+  margin: 0 0.5rem;
+}
+
+
+@media (max-width: 900px){
+  .Header > h1{
+    font-size: 2rem;
+  }
+  .Header > img{ height: 50%; }
+}

@@ -1,0 +1,30 @@
+.MessageContainer{
+  width: 100%;
+}
+
+.MessageContainer:nth-child(even) > .Message{
+  margin-left: auto;
+  background: rgb(255, 125, 39);
+}
+
+.Message{
+  width: 500px;
+  margin: .5rem;
+  padding: 1rem;
+  background: rgb(14, 90, 161);
+  border-radius: 6px;
+  color: #fff;
+  box-shadow: 0 0 10px -4px #000;
+}
+
+
+.Text, .Author{
+  margin: 5px 0;
+  font-family: 'Roboto', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.Author{
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
