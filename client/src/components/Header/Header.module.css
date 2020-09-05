@@ -18,9 +18,16 @@
   margin: 0 0.5rem;
 }
 
+.Icon{
+  color: coral;
+  font-size: 4.5rem;
+}
 
 @media (max-width: 900px){
   .Header > h1{
+    font-size: 2rem;
+  }
+  .Icon{
     font-size: 2rem;
   }
   .Header > img{ height: 50%; }

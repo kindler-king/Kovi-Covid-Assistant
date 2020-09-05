@@ -74,7 +74,7 @@
   justify-content: center;
   align-items: center;
   background: #fff;
-  height: 10%;
+  height: 8%;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
@@ -86,7 +86,7 @@
   display: inline-flex;
   align-items: center;
   margin:0 5px;
-  font-size: 1.3rem;
+  font-size: 1rem;
   cursor: pointer;
 }
 
@@ -111,6 +111,7 @@
   width: 75%;
   height: 85%;
   overflow-y: scroll;
+  overflow-x: hidden;
   margin: 0 auto;
   /* background: #fff; */
   padding: 0.5rem;
