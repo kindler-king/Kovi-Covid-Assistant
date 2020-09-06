@@ -14,7 +14,7 @@ const Message = (props) => {
 				<h2>{props.articles[0].title}</h2>
 				<span>{props.articles[0].published_date.split(' ')[0]}</span>
 				<p>{props.articles[0].summary}</p>
-				<a target="_blank" href={props.articles[0].link}>
+				<a target="_blank" rel="noopener noreferrer" href={props.articles[0].link}>
 					Read Full Article
 				</a>
 			</div>
