@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition = new SpeechRecognition();
+let recognition = new SpeechRecognition();
 
 recognition.continuous = true;
 recognition.lang = "en-US";
@@ -17,18 +17,23 @@ const ListenModal = (props) => {
 
   useEffect(() => {
     recognition.start();
+  }, []);
+
+  const { onSpeech, cancel } = props;
+
+  useEffect(() => {
     recognition.onresult = (e) => {
       for (let res of e.results) {
         const result = res[0].transcript;
-        if (result){
+        if (result) {
           if (res.isFinal) {
             setTranscript(result);
             setInterim("");
+            recognition.stop();
             // LET THE USER SEE THE FINAL RESULT BEFORE CLOSING MODAL
-            setInterval(() => {
-              recognition.stop();
-              props.onSpeech(transcript);
-              props.cancel();
+            setTimeout(() => {
+              onSpeech(result);
+              cancel();
             }, 1500);
           } else {
             setInterim(result);
@@ -36,28 +41,31 @@ const ListenModal = (props) => {
         }
       }
     };
-  }, []);
-
-  const recognitionStop = () => {
-    recognition.stop();
-    props.cancel();
-  };
+  }, [transcript, onSpeech, cancel]);
 
   return (
     <div className={classes.ListenModal}>
       <div className={classes.Modal}>
-        <h1>Tell me your query</h1>
+        <h1>
+          Tell me your query&nbsp;
+          <FontAwesomeIcon icon="microphone" />
+        </h1>
         {interim && (
-          <p className="my-2" style={{ color: "gray" }}>
+          <p className={classes.ModalText} style={{ color: "gray" }}>
             {interim}
           </p>
         )}
-        {transcript && <p className="my-2 text-dark ">{transcript}</p>}
-        {!transcript && !interim && (<p className="text-dark font-weight-bold" >Bol na bhosdike</p>)}
-        <h1>
-          <FontAwesomeIcon icon="microphone" />
-        </h1>
-        <button className={classes.Cancel} onClick={recognitionStop}>
+        {transcript && <p className={classes.ModalText}>{transcript}</p>}
+        {!transcript && !interim && (
+          <p className={classes.ModalText}>Listening for query...</p>
+        )}
+        <button
+          className={classes.Cancel}
+          onClick={() => {
+            recognition.stop();
+            props.cancel();
+          }}
+        >
           Cancel
         </button>
       </div>

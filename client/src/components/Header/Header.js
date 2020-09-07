@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className={classes.Header} >
       {/* <img src={Logo} alt="Main Logo" /> */}
-      <h1>C<FontAwesomeIcon icon="virus" className={classes.Icon} />vid Assistant</h1>
+      <h1>K<FontAwesomeIcon icon="virus" className={classes.Icon} />vi</h1>
     </div>
   )
 }

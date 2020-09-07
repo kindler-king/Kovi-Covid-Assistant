@@ -4,13 +4,14 @@
   display: flex;
   justify-content: center ;
   align-items: center;
-  /* background: rgb(17, 98, 190); */
+  background: transparent;
 }
 
 .Header > h1{
   font-size: 5rem;
   color: #fff;
   letter-spacing: 5px;
+  background: #1d1d1d;
 }
 
 .Header > img {

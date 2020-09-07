@@ -37,3 +37,10 @@
   cursor: pointer;
   border-radius: 4px;
 }
+
+.ModalText{
+  font-size: 1.25rem;
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0.9rem 0;
+  font-weight: bold;
+}
