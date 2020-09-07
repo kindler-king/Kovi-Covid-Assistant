@@ -1,6 +1,6 @@
 const express = require("express");
 const socketio = require("socket.io");
-
+const axios = require('axios');
 const app = express();
 
 // CORS
@@ -23,7 +23,15 @@ io.on("connection", (socket) => {
 
   socket.on("query", (query) => {
     console.log(query);
-    socket.emit('query-response', 'Here is your response');
+    axios.get('http://localhost:5005/webhooks/rest/webhook')
+      .then(res => {
+        console.log(res.data);
+        socket.emit('query-response', res.data.text);
+      })
+      .catch(err => {
+        console.log(err);
+        socket.emit('query-response', 'Oops! Looks like something went wrong!! Couldn\'t get response');
+      })
   });
 
   socket.on("disconnect", () => {

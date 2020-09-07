@@ -146,21 +146,6 @@ const particlesConfig = {
 
 function App() {
 
-
-  useEffect(() => {
-    axios.get('')
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-    // axios.post('', {sender: 'Me', message: 'Hi'})
-    //   .then(res => console.log(res.data))
-    //   .catch(err => console.log(err));
-  },[]);
-
   return (
     <div
       style={{

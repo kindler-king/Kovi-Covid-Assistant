@@ -62,7 +62,7 @@ const Main = () => {
   const queryRasa = (query) => {
     setLoading(true);
     console.log(query);
-    setMessages((prevState) => [...prevState, generateMessageObj(query, name)]);
+    setMessages((prevState) => [...prevState, generateMessageObj(query, name)]);    
     socket.emit("query", query);
   };
 

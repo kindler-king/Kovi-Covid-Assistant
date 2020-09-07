@@ -12,6 +12,7 @@
   "author": "Sayan Das & Arya Sarkar",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.20.0",
     "express": "^4.17.1",
     "mongoose": "^5.10.2",
     "react-particles-js": "^3.3.0",
