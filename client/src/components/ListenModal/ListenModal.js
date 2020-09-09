@@ -29,7 +29,7 @@ const ListenModal = (props) => {
           if (res.isFinal) {
             setTranscript(result);
             setInterim("");
-            recognition.stop();
+            recognition.abort();
             // LET THE USER SEE THE FINAL RESULT BEFORE CLOSING MODAL
             setTimeout(() => {
               onSpeech(result);
