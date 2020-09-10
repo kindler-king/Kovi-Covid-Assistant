@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment, memo } from 'react';
 import classes from './Main.module.css';
 import axios from 'axios';
 import io from 'socket.io-client';
@@ -9,6 +9,7 @@ import Header from '../Header/Header';
 import Message from '../Message/Message';
 
 const Main = () => {
+	// console.log('RENDERING MAIN');
 	const [ name, setName ] = useState('');
 	const [ hasName, sethasName ] = useState(false);
 	// const [articles, setArticles] = useState(null);
@@ -20,17 +21,24 @@ const Main = () => {
 	const [ messages, setMessages ] = useState([]);
 
 	const generateMessageObj = (value, author = 'Kovi') => {
-		console.log(author);
-		return { author, value };
+		let msgObj = Object.assign({});
+		for (let item of value) {
+			msgObj = Object.assign(msgObj, item);
+		}
+		msgObj.author = author;
+		// console.log(msgObj);
+		return msgObj;
 	};
 
 	// SOCKET USE-EFFECT - DEFINE AND HANDLE SOCKET EVENTS AFTER SOCKET CONNECTION HAS BEEN ESTABLISHED.
 	useEffect(
 		() => {
+			// console.log('SOCKET USE-EFFECT');
 			if (socket) {
 				socket.on('query-response', (response) => {
-					koviSpeak(response);
-					setMessages((prevState) => [ ...prevState, generateMessageObj(response) ]);
+					let msgObj = generateMessageObj(response);
+					setMessages((prevState) => [ ...prevState,msgObj ]);
+					koviSpeak(msgObj.text);
 					setLoading(false);
 					console.log(messages);
 				});
@@ -42,14 +50,14 @@ const Main = () => {
 	// NAME USE-EFFECT - SET NAME OF CURRENT USER.
 	useEffect(
 		() => {
+			// console.log('GREETINGS FROM KOVI');
 			if (name) {
 				const clientSocket = io('localhost:8000', { query: `name=${name}` });
 				setSocket(clientSocket);
 				clientSocket.on('greetings', (msg) => {
-					koviSpeak(msg);
-					console.log(msg);
-					setMessages((prevState) => [ ...prevState, generateMessageObj(msg) ]);
-					console.log(messages);
+					let obj = generateMessageObj(msg)
+					setMessages((prevState) => [ ...prevState,obj  ]);
+					koviSpeak(obj.text);
 				});
 			}
 		},
@@ -58,14 +66,14 @@ const Main = () => {
 
 	// TEXT-TO-SPEECH FUNCTION
 	const koviSpeak = (text) => {
-		// window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+		window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));
 	};
 
 	// SERVER RESPONSE FUNCTION.
 	const queryRasa = (query) => {
 		setLoading(true);
 		console.log(query);
-		setMessages((prevState) => [ ...prevState, generateMessageObj(query, name) ]);
+		setMessages((prevState) => [ ...prevState, generateMessageObj([ { text: query } ], name) ]);
 		socket.emit('query', query);
 	};
 
@@ -80,7 +88,7 @@ const Main = () => {
 						type="text"
 						placeholder="Enter Your Name"
 						required
-						autoFocus
+						autoFocus={true}
 						spellCheck="false"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
@@ -96,7 +104,15 @@ const Main = () => {
 			<div className={classes.ChatContainer}>
 				<div className={classes.ChatWindow}>
 					{/* Messages go here */}
-					{messages.map((msg) => <Message author={msg.author} msg={msg.value} />)}
+					{messages.map((msg) => (
+						<Message
+							key={Date.now() + Math.random()}
+							author={msg.author}
+							msg={msg.text}
+							articles={msg.news}
+							stats={msg.stats}
+						/>
+					))}
 				</div>
 				<div className={classes.ChatControls}>
 					{loading ? (
@@ -115,7 +131,13 @@ const Main = () => {
 								value={speech}
 								onChange={(e) => setSpeech(e.target.value)}
 							/>
-							<p className={classes.ControlIcon} onClick={() => queryRasa(speech)}>
+							<p
+								className={classes.ControlIcon}
+								onClick={() => {
+									queryRasa(speech);
+									setSpeech('');
+								}}
+							>
 								<FontAwesomeIcon icon="paper-plane" />
 							</p>
 						</Fragment>
@@ -126,4 +148,4 @@ const Main = () => {
 	);
 };
 
-export default Main;
+export default memo(Main);

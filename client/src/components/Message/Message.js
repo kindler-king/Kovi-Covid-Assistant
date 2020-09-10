@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, memo } from 'react';
 
 import classes from './Message.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,11 +10,11 @@ const Message = (props) => {
 	if (props.articles) {
 		articlesView = props.articles.map((article) => (
 			<div className={classes.NewsItem} key={article._id}>
-				<img src={props.articles[0].media} alt="Article Media" />
-				<h2>{props.articles[0].title}</h2>
-				<span>{props.articles[0].published_date.split(' ')[0]}</span>
-				<p>{props.articles[0].summary}</p>
-				<a target="_blank" rel="noopener noreferrer" href={props.articles[0].link}>
+				<img src={article.media} alt="Article Media" />
+				<h2>{article.title}</h2>
+				<span>{article.published_date.split(' ')[0]}</span>
+				<p>{article.summary}</p>
+				<a target="_blank" rel="noopener noreferrer" href={article.link}>
 					Read Full Article
 				</a>
 			</div>
@@ -22,20 +22,29 @@ const Message = (props) => {
 	}
 	if (props.stats) {
 		statsView = (
-			<div className={classes.Stats}>
-				<div className={classes.Stat}>
-					<p> <FontAwesomeIcon icon="viruses" style={{color: 'coral'}} /> Confirmed Cases: </p>
-					<h3>{props.stats.confirmed}</h3>
+			<Fragment>
+				<h1 style={{ color: '#fff' }}>{props.stats.tag} Stats</h1>
+				<div className={classes.Stats}>
+					<div className={classes.Stat}>
+						<p>
+							<FontAwesomeIcon icon="viruses" style={{ color: 'white' }} /> Confirmed Cases:{' '}
+						</p>
+						<h3>{props.stats.data.confirmed}</h3>
+					</div>
+					<div className={classes.Stat}>
+						<p>
+							<FontAwesomeIcon icon="heart" style={{ color: 'white' }} /> Recoveries:
+						</p>
+						<h3>{props.stats.data.recovered}</h3>
+					</div>
+					<div className={classes.Stat}>
+						<p>
+							<FontAwesomeIcon icon="skull" style={{ color: 'white' }} /> Deaths:
+						</p>
+						<h3>{props.stats.data.deaths}</h3>
+					</div>
 				</div>
-				<div className={classes.Stat}>
-					<p><FontAwesomeIcon icon="heart" style={{color: 'rgb(57, 233, 27)'}} /> Recoveries:</p>
-					<h3>{props.stats.recovered}</h3>
-				</div>
-				<div className={classes.Stat}>
-					<p><FontAwesomeIcon icon="skull" style={{color: 'red'}} /> Deaths:</p>
-					<h3>{props.stats.deaths}</h3>
-				</div>
-			</div>
+			</Fragment>
 		);
 	}
 	return (
@@ -44,7 +53,7 @@ const Message = (props) => {
 				<p className={classes.Author}>
 					<em>{props.author}</em>
 				</p>
-        <p className={classes.Text}>{props.msg}</p>
+				<p className={classes.Text}>{props.msg}</p>
 			</div>
 			{props.articles && (
 				<Fragment>
@@ -66,4 +75,20 @@ const Message = (props) => {
 	);
 };
 
-export default Message;
+function arraysEqual(a, b) {
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length !== b.length) return false;
+
+  for (var i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
+
+// const shouldRerender = (prevProps, newProps) => {
+// 	let ret = false;
+// 	if(prevProps.text === )
+// };
+
+export default memo(Message);

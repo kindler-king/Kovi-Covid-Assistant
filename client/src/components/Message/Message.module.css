@@ -91,22 +91,35 @@
 .Stats{
   width: 100%;
   display: flex;
+  /* flex-direction: column; */
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 1rem;
 }
 .Stat{
-  min-width: 20%;
+  min-width: 30%;
   width: auto;
   text-align: center;
   padding: 1rem;
+  margin: 10px;
   background: #fff;
-  border-radius: 10px;
-  cursor: pointer;
   animation-name: fade-in;
   animation-duration: 1s;
   animation-timing-function: ease-in;
 }
+
+.Stat:first-child{
+  background: #ff5e15;
+}
+
+.Stat:nth-child(2){
+  background: rgb(82, 221, 1);
+}
+
+.Stat:last-child{
+  background: rgb(158, 3, 3)
+}
+
 @keyframes fade-in{
   from{
     opacity: 0;
@@ -118,6 +131,7 @@
 .Stat > p {
   font-size: 1rem;
   font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
 }
 .Stat > h3{
   margin-top: 0.8rem;
