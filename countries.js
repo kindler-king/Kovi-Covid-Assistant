@@ -328,8 +328,6 @@ exports.getGlobalStats = () => {
 	});
 };
 
-
-
 exports.getNewsSearchString = (s, c=null) => {
 	const str = [];
 	const ar = s.toLowerCase().split(' ');

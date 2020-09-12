@@ -1,0 +1,131 @@
+intents:
+  - greet
+  - goodbye
+  - bot_challenge
+  - gender
+  - tell_joke
+  - corona_basic_info
+  - corona_spread
+  - corona_spread_food
+  - corona_warm_weather
+  - corona_community_spread
+  - corona_mosquito
+  - corona_protect_myself
+  - corona_package
+  - corona_contact_with_covid
+  - corona_age
+  - corona_water
+  - corona_pets
+  - corona_end
+  - corona_symptoms
+  - corona_higherrisk
+  - corona_global_stats
+  - corona_country_stats
+  - corona_risk
+  - corona_testing
+
+entities:
+  - country
+
+actions:
+  - utter_iamabot
+  - utter_gender
+  - utter_joke
+  - utter_info
+  - utter_spread
+  - utter_foodspread
+  - utter_warm_weather
+  - utter_communityspread
+  - utter_coronamosquito
+  - utter_coronaprotecttiontips
+  - utter_packagefaq
+  - utter_contactwithcovid
+  - utter_agefaq
+  - utter_watertransmission
+  - utter_petfaq
+  - utter_endfaq
+  - utter_symptoms
+  - utter_risk
+  - action_world_stats
+  - action_country_stats
+  - utter_country_stats
+  - utter_world_stats
+  - utter_corona_testing
+
+
+
+
+responses:
+  utter_iamabot:
+  - text: "I am a your partner, KOVI the almighty assistant. I am happy to be of help to you"
+
+  utter_gender:
+  - text: "I have no gender, i am a chatbot. I have no parents or siblings. I only have a purpose, that is to help everyone amidst the pandemic with information."
+
+  utter_joke:
+  - text: "It's not a good time to be cracking jokes, rather ask me something regarding corona virus i will gladly answer it."
+  
+  utter_info:
+  - text: "On February 11, 2020 the World Health Organization announced an official name for the disease that is causing the 2019 novel coronavirus outbreak, first identified in Wuhan China. The new name of this disease is coronavirus disease 2019, abbreviated as COVID-19. In COVID-19, ‘CO’ stands for ‘corona,’ ‘VI’ for ‘virus,’ and ‘D’ for disease. Formerly, this disease was referred to as “2019 novel coronavirus” or “2019-nCoV”"
+
+  utter_spread:
+  - text: "The virus that causes COVID-19 is thought to spread mainly from person to person, mainly through respiratory droplets produced when an infected person coughs, sneezes, or talks. These droplets can land in the mouths or noses of people who are nearby or possibly be inhaled into the lungs. Spread is more likely when people are in close contact with one another (within about 6 feet)."
+
+  utter_foodspread:
+  - text: "Currently there is no evidence that people can get COVID-19 by eating or handling food.It may be possible that people can get COVID-19 by touching a surface or object, such as a food package or dining ware that has the virus on it and then touching their own mouth, nose, or possibly their eyes."
+
+  utter_warm_weather:
+  - text: "It is not yet known whether weather and temperature affect the spread of COVID-19. Some other viruses, like those that cause the common cold and flu, spread more during cold weather months but that does not mean it is impossible to become sick with these viruses during other months."
+
+  utter_communityspread:
+  - text: "Community spread means people have been infected with the virus in an area, including some who are not sure how or where they became infected. Each health department determines community spread differently based on local conditions."
+
+  utter_coronamosquito:
+  - text: "At this time, CDC has no data to suggest that this new coronavirus or other similar coronaviruses are spread by mosquitoes or ticks. The main way that COVID-19 spreads is from person to person. See How Coronavirus Spreads for more information."
+
+  utter_coronaprotecttiontips:
+  - text: "Wash your hands often with soap and water for at least 20 seconds especially after you have been in a public place, or after blowing your nose, coughing, or sneezing.Avoid touching your eyes, nose, and mouth with unwashed hands."
+  - text: "Everyone should wear a mask in public settings and when around people who don’t live in your household, especially when other social distancing measures are difficult to maintain. Clean AND disinfect frequently touched surfaces daily. And finally put 6 feet of distance between yourself and people who don’t live in your household. "
+  
+  utter_packagefaq:
+  - text: "Although the virus can survive for a short period on some surfaces, it is unlikely to be spread from domestic or international mail, products or packaging. However, it may be possible that people can get COVID-19 by touching a surface or object that has the virus on it and then touching their own mouth, nose, or possibly their eyes. Thoroughly Sanitize packages before bringing them into the household."
+
+  utter_contactwithcovid:
+  - text: "Be alert for symptoms. Watch for fever, cough, shortness of breath, or other symptoms of COVID-19.Stay home when you are sick, except to get medical care.However, some people may need emergency medical attention stay indoors to prevent spread and isolate yourself for your and your families safety."
+
+  utter_agefaq:
+  - text: "Based on available evidence, children do not appear to be at higher risk for COVID-19 than adults. While some children and infants have been sick with COVID-19, adults make up most of the known cases to date."
+
+  utter_watertransmission:
+  - text: "The virus that causes COVID-19 has not been detected in treated drinking water. Water treatment plants use filters and disinfectants to remove or kill germs, like the virus that causes COVID-19. "
+  - text: "Recently, ribonucleic acid (RNA) from the virus that causes COVID-19 has been found in untreated wastewater. While data are limited, there is little evidence of infectious virus in wastewater, and no information to date that anyone has become sick with COVID-19 because of exposure to wastewater."
+
+  utter_petfaq:
+  - text: "At this time, there is no evidence that animals play a significant role in spreading the virus that causes COVID-19. Based on the limited information available to date, the risk of animals spreading COVID-19 to people is considered to be low. However, since animals can spread other diseases to people, it’s always a good idea to practice healthy habits around pets and other animals, such as washing your hands and maintaining good hygiene."
+
+  utter_endfaq:
+  - text: "The head of WHO said in previous interviews, that they hope to finish this pandemic in less than two years. The two main ways to combat the virus and end the pandemic is through herd immunity which will take a lot of time, and development of vaccines."
+
+  utter_symptoms:
+  - text: "Symptoms may appear 2-14 days after exposure to the virus. Some of the most common symptoms are: Fever or chills,Cough,Shortness of breath ,Fatigue ,Muscle or body aches,Headache,New loss of taste or smell,Sore throat,Congestion or runny nose,Nausea or vomiting"
+
+  utter_risk:
+  - text: "COVID-19 is a new disease and there is limited information regarding risk factors for severe disease. Based on currently available information and clinical expertise, older adults and people with underlying medical conditions are at higher risk for severe illness from COVID-19."
+
+  utter_world_stats:
+  - text: "Covid-19 pandemic latest data of the world is {worldstats}"
+
+  utter_country_stats:
+  - text: "Covid-19 pandemic latest data of the country your requested is {country}"
+
+  utter_corona_testing:
+  - text: "Corona Virus Testing Centre information near your current location (KOLKATA) are listed on this google map. You can press the link to access the details of the centres. https://www.google.com/search?sxsrf=ALeKk02mILYDKXfxl4gUhdaKlXT_9PDhow:1599683558119&q=covid+19+testing+centres+near+me&npsic=0&rflfq=1&rlha=0&rllag=22502255,88404316,1267&tbm=lcl&ved=2ahUKEwi5gPDR9dzrAhXgIbcAHaRpBfoQtgN6BAgTEAk&rldoc=1"
+  
+  
+
+
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
