@@ -8,7 +8,7 @@ Kovi is a **Covid-19** assistant chatbot which provides us with many features. I
 
 Kovi is still in its alpha age and isn't deployed yet.
 
-### A Working demo is available [here](https://youtu.be/Ycd8BHb_imk)
+### A working video demo is available [here](https://youtu.be/Ycd8BHb_imk)
 
 ### Steps to run the Kovi 
 
