@@ -6,11 +6,11 @@ Kovi is a **Covid-19** assistant chatbot which provides us with many features. I
 - Providing you with the **latest news of the world or any specific country** and 
 - Keeping you updated with **real-time statistics** of the world or any country in particular. 
 
-Kovi is still in its alpha age and isn't deployed yet.
+### ***Kovi is still in its alpha age and isn't deployed yet.***
 
-### A working video demo is available [here](https://youtu.be/Ycd8BHb_imk)
+A working video demo is available [here](https://youtu.be/Ycd8BHb_imk)
 
-### Steps to run the Kovi 
+### Steps to run Kovi 
 
 - Install all dependencies `npm run project-install`
 - Start the website with `npm run dev`
